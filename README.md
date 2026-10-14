@@ -87,3 +87,30 @@ export default function KT() {
     </ImageBackground>
   );
 }
+
+
+
+import { View, Text, Image } from 'react-native';
+
+const format = (p) => p?.toLocaleString('vi-VN') + ' đ';
+
+export default function Products1({ item }) {
+  return (
+    <View className="bg-white rounded-2xl overflow-hidden mb-4" style={{ width: '48%' }}>
+      {/* Hình ảnh */}
+      <Image source={{ uri: item.image }} className="w-full h-40" resizeMode="cover" />
+
+      {/* Thông tin */}
+      <View className="p-3">
+        <Text className="text-base text-gray-800 mb-2" numberOfLines={2}>
+          {item.name}
+        </Text>
+
+        <View className="flex-row items-center justify-between">
+          <Text className="text-base font-bold text-green-600">{format(item.price)}</Text>
+          <Text className="text-xs text-gray-400 line-through">{format(item.originalPrice)}</Text>
+        </View>
+      </View>
+    </View>
+  );
+}
